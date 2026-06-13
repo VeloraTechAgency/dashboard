@@ -29,7 +29,11 @@ export function useAuth(): UseAuthReturn {
         return true;
       } catch (err: unknown) {
         const message =
-          err instanceof Error ? err.message : 'Login failed';
+          err && typeof err === 'object' && 'response' in err
+            ? (err as { response: { data: { message: string } } }).response.data.message
+            : err instanceof Error
+              ? err.message
+              : 'Login failed';
         setError(message);
         return false;
       } finally {
@@ -50,7 +54,11 @@ export function useAuth(): UseAuthReturn {
         return true;
       } catch (err: unknown) {
         const message =
-          err instanceof Error ? err.message : 'Registration failed';
+          err && typeof err === 'object' && 'response' in err
+            ? (err as { response: { data: { message: string } } }).response.data.message
+            : err instanceof Error
+              ? err.message
+              : 'Registration failed';
         setError(message);
         return false;
       } finally {

@@ -62,7 +62,7 @@ export function LoginPage() {
           </Button>
 
           <p className="text-center text-xs text-navy-500 mt-4">
-            Demo: admin@veloratech.com / password
+            Demo: admin@velora.tech / password123
           </p>
         </form>
       </div>

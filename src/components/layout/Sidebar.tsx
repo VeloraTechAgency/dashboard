@@ -69,11 +69,11 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        'fixed left-0 top-0 z-30 flex h-full flex-col border-r border-navy-700/50 bg-navy-900 transition-all duration-300',
+        'fixed left-0 top-0 z-30 flex h-full flex-col border-r border-navy-700/50 bg-navy-900 transition-all duration-300 overflow-y-auto',
         sidebarOpen ? 'w-64' : 'w-0 -translate-x-full lg:w-20 lg:translate-x-0',
       )}
     >
-      <div className="flex h-16 items-center gap-2 border-b border-navy-700/50 px-4">
+      <div className="flex h-16 shrink-0 items-center gap-2 border-b border-navy-700/50 px-4">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-500">
           <span className="text-sm font-bold text-white font-display">C</span>
         </div>
@@ -84,7 +84,7 @@ export function Sidebar() {
         )}
       </div>
 
-      <nav className="flex-1 space-y-1 p-3">
+      <nav className="flex-1 space-y-1 overflow-y-auto p-3">
         {sidebarItems.map((item) => (
           <NavLink
             key={item.path}
@@ -100,14 +100,14 @@ export function Sidebar() {
             }
           >
             {item.icon}
-            {sidebarOpen && <span>{item.label}</span>}
+            {sidebarOpen && <span className="truncate">{item.label}</span>}
           </NavLink>
         ))}
       </nav>
 
-      <div className="border-t border-navy-700/50 p-3">
+      <div className="border-t border-navy-700/50 p-3 shrink-0">
         <div className="flex items-center gap-3 rounded-lg px-3 py-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-500/20 text-primary-400 text-sm font-medium">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-500/20 text-primary-400 text-sm font-medium shrink-0">
             {user?.name?.charAt(0) || 'U'}
           </div>
           {sidebarOpen && (
@@ -121,9 +121,9 @@ export function Sidebar() {
         </div>
         <button
           onClick={logout}
-          className="mt-2 flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-400 hover:text-red-400 hover:bg-navy-800 transition-colors"
+          className="mt-2 flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-navy-400 hover:text-red-400 hover:bg-navy-800 transition-colors shrink-0"
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
           </svg>
           {sidebarOpen && <span>Logout</span>}
