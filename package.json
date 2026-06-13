@@ -9,12 +9,13 @@
     "build:fe": "tsc -b && vite build",
     "build:server": "tsc -p tsconfig.server.json",
     "lint": "eslint .",
-    "preview": "vite preview",
+    "preview": "npm run build:fe && wrangler dev",
     "server:dev": "tsx watch server/index.ts",
     "server:start": "NODE_ENV=production node dist-server/index.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "deploy": "npm run build:fe && wrangler deploy"
   },
   "dependencies": {
     "@prisma/client": "^6.0.0",
@@ -33,6 +34,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.40.2",
     "@eslint/js": "^10.0.1",
     "@tailwindcss/vite": "^4.3.0",
     "@types/bcryptjs": "^2.4.6",
@@ -52,6 +54,7 @@
     "tsx": "^4.19.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "wrangler": "^4.100.0"
   }
 }
