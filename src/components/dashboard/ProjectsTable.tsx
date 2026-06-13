@@ -8,6 +8,15 @@ import { ErrorState } from '../ui/ErrorState';
 import { formatDate } from '../../lib/utils';
 import type { Project } from '../../types/project';
 
+function parseTechStack(techStack: string): string[] {
+  try {
+    const parsed = JSON.parse(techStack || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return techStack ? techStack.split(',').map((s) => s.trim()) : [];
+  }
+}
+
 interface ProjectsTableProps {
   onEdit: (project: Project) => void;
   onDelete: (project: Project) => void;
@@ -69,7 +78,7 @@ export function ProjectsTable({ onEdit, onDelete }: ProjectsTableProps) {
               </td>
               <td className="px-4 py-3 hidden md:table-cell">
                 <div className="flex flex-wrap gap-1">
-                  {JSON.parse(project.tech_stack || '[]').map(
+                  {parseTechStack(project.tech_stack).map(
                     (tech: string) => (
                       <Badge key={tech} variant="info">
                         {tech.trim()}
