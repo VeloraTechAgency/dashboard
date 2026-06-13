@@ -36,9 +36,14 @@ jspm_packages/
 .env.production.local
 .env.*.local
 
-# Vite/Vite-related build outputs
+# Build outputs
 dist/
 dist-ssr/
+dist-server/
+
+# Database
+prisma/dev.db
+prisma/dev.db-journal
 
 # Editor / IDE settings
 .vscode/*
