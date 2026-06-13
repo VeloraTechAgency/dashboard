@@ -1,0 +1,1 @@
+{"version":3,"file":"security.d.ts","sourceRoot":"","sources":["../../server/middleware/security.ts"],"names":[],"mappings":"AAGA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,SAAS,CAAC;AAE9C;;;;;;;;;;;GAWG;AACH,eAAO,MAAM,eAAe,EAAE,cAY5B,CAAC;AAEH;;;GAGG;AACH,eAAO,MAAM,cAAc,EAAE,cAK3B,CAAC;AAEH;;;GAGG;AACH,eAAO,MAAM,iBAAiB,EAAE,cAG/B,CAAC"}

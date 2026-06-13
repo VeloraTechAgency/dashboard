@@ -5,6 +5,15 @@ import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
 import { Spinner } from '../ui/Spinner';
 
+function parseTechStack(techStack: string): string[] {
+  try {
+    const parsed = JSON.parse(techStack || '[]');
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return techStack ? techStack.split(',').map((s) => s.trim()) : [];
+  }
+}
+
 export function ProjectsSection() {
   const { featuredProjects, status, fetchFeaturedProjects } = useProjects();
 
@@ -90,7 +99,7 @@ export function ProjectsSection() {
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {JSON.parse(project.tech_stack || '[]').map(
+                    {parseTechStack(project.tech_stack).map(
                       (tech: string) => (
                         <Badge key={tech} variant="info">
                           {tech.trim()}
